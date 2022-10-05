@@ -32,14 +32,13 @@ export default function CadastrarCidade({cidade}) {
                 method: 'POST'
             })
             .then(() => {
-                setForm(
-                    { nomeCidade: '', urlBrasao: '' }
-                )
+                setForm({ nomeCidade: '', urlBrasao: ''})
                 router.replace(router.asPath)
             })
         }catch (error){
             console.log(error);
         }
+        router.replace(router.asPath)
     }
 
 
@@ -51,11 +50,7 @@ export default function CadastrarCidade({cidade}) {
     //     }
     // }
 
-    function resetform(form: DataForm){
-        window.location.pathname
-        
-    }
-
+    
     return (
         <>
             <NavBar></NavBar>
@@ -67,7 +62,7 @@ export default function CadastrarCidade({cidade}) {
                                 <form onSubmit = {e =>{
                                     e.preventDefault()
                                     criar(form)
-                                    
+                                    router.replace(router.asPath)
                                 }}>
                                     <div className='cardCidade'>
                                         <div>
@@ -94,7 +89,7 @@ export default function CadastrarCidade({cidade}) {
                                             </div>
                                             <div className='f12'>
                                                     <Button id='botaolimpar' size="large" type='reset' variant="outlined">LImpar</Button>
-                                                    <Button onClick={e => resetform(form)} id='botao' size='large' variant="contained" type="submit">Adicionar +</Button>
+                                                    <Button id='botao' size='large' variant="contained" type="submit">Adicionar +</Button>
                                             </div>
                                         </div>
                                     </div>

@@ -8,7 +8,8 @@ export default function Cidade({cidade, idCidade}){
       <header>
         <NavBar/>
         <div>
-          
+          {cidade.nome}
+          {console.log(idCidade)}
         </div>
       </header>
       <br></br>

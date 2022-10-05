@@ -11,9 +11,11 @@ export default async function criarCidade(req: NextApiRequest, res: NextApiRespo
                 nome : nomeCidade,
                 urlbrasao : urlBrasao,
             }
+            
         })
-        res.status(200).json({message: 'NÃO Criado.'})
+
     }
+    
     catch(error){
         console.log("Falha.")
     }

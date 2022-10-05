@@ -6,7 +6,7 @@ import { PrismaClient } from "@prisma/client";
 import { useRouter } from "next/router";
 
 
-export default function CardListagem({idCidade, descricao}){
+export default function CardListagem({idCidade, descricao, destino}){
     const router = useRouter();
     const editar = async() =>{ 
         console.log('Editar');
@@ -19,16 +19,18 @@ export default function CardListagem({idCidade, descricao}){
     }
 
     async function deletarCidade (){
-        console.log('deletar cidade', idCidade)
+        console.log('deletar cidade')
         try{
-            console.log('entrou e esta tentando encontrar')
-            fetch(`http://localhost:3000/api/cidades/delete/${idCidade}`,{   
+            fetch('http://localhost:3000/api/criarCidade',{
+                body: JSON.stringify(idCidade),
+    
                 headers : {
-                    'Content-type' : 'application/json',
+                    'Content-type' : 'application/json'
                 },
-                method: 'DELETE'
+                method: 'POST'
             })
             .then(() => {
+                
                 router.replace(router.asPath)
             })
         }catch (error){

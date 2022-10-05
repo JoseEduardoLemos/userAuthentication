@@ -52,8 +52,7 @@ export default function CadastrarCidade({cidade}) {
     // }
 
     function resetform(form: DataForm){
-        window.location.pathname
-        
+        router.replace(router.asPath)
     }
 
     return (

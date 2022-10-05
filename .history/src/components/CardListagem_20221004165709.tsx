@@ -22,13 +22,14 @@ export default function CardListagem({idCidade, descricao}){
         console.log('deletar cidade', idCidade)
         try{
             console.log('entrou e esta tentando encontrar')
-            fetch(`http://localhost:3000/api/cidades/delete/${idCidade}`,{   
+            fetch('http://localhost:3000/api/deletarCidade',{   
                 headers : {
-                    'Content-type' : 'application/json',
+                    'Content-type' : 'application/json'
                 },
                 method: 'DELETE'
             })
             .then(() => {
+                
                 router.replace(router.asPath)
             })
         }catch (error){

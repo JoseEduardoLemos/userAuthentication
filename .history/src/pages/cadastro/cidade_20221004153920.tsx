@@ -1,10 +1,11 @@
-import { Button, TextField } from "@mui/material";
+import { Button, Input } from "@mui/material";
 import { PrismaClient } from "@prisma/client";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import CardCidade from "../../components/CardListagem";
 import NavBar from "../../components/NavBar";
 import '../../styles/cidade.module.css';
+
 
 
 
@@ -15,15 +16,18 @@ interface DataForm{
 
 
 export default function CadastrarCidade({cidade}) {
-    const [notify, setnotify] = useState({isOpen: false, message: '', type:''
-})
+
     const [form, setForm] = useState<DataForm>({nomeCidade: '', urlBrasao: ''})
     const router = useRouter();
+
+    const refreshData = () => {
+        router.replace(router.asPath)
+    }
 
     async function criar(data: DataForm){
         console.log(data);
         try{
-            fetch('http://localhost:3000/api/cidades/create/criarCidade',{
+            fetch('http://localhost:3000/api/criarCidade',{
                 body: JSON.stringify(data),
     
                 headers : {
@@ -32,10 +36,9 @@ export default function CadastrarCidade({cidade}) {
                 method: 'POST'
             })
             .then(() => {
-                setForm(
-                    { nomeCidade: '', urlBrasao: '' }
-                )
-                router.replace(router.asPath)
+                refreshScreen()
+                setForm({ nomeCidade: '', urlBrasao: ''})
+                refreshData()
             })
         }catch (error){
             console.log(error);
@@ -43,19 +46,18 @@ export default function CadastrarCidade({cidade}) {
     }
 
 
-    // const handleSubmit = async (data: DataForm) => {
-    //     try {
-    //         criar(data)
-    //     }catch (error){
-    //         console.log(error);
-    //     }
-    // }
-
-    function resetform(form: DataForm){
-        window.location.pathname
-        
+    const handleSubmit = async (data: DataForm) => {
+        try {
+            criar(data)
+        }catch (error){
+            console.log(error);
+        }
     }
 
+    const refreshScreen = () =>{
+        location.reload();
+        return false;
+    }
     return (
         <>
             <NavBar></NavBar>
@@ -66,16 +68,16 @@ export default function CadastrarCidade({cidade}) {
                             <div>
                                 <form onSubmit = {e =>{
                                     e.preventDefault()
-                                    criar(form)
-                                    
+                                    handleSubmit(form)
+                                    refreshScreen()
                                 }}>
                                     <div className='cardCidade'>
                                         <div>
                                             <div className='f1'>
-                                                <TextField
+                                                <Input
+                                                    id="inserirTexto"
                                                     type="text"
                                                     name="nomeCidade"
-                                                    label="Nome da cidade"
                                                     onChange={e => setForm({...form, nomeCidade : e.target.value})}
                                                     placeholder="exemplo: Astorga"
                                                     required 
@@ -83,9 +85,9 @@ export default function CadastrarCidade({cidade}) {
                                                 />
                                             </div>
                                             <div className='f1'>
-                                                <TextField
+                                                <Input
+                                                    id="inserirTexto"
                                                     name="urlBrasao"
-                                                    label="URL do brasão"
                                                     onChange={e => setForm({...form, urlBrasao: e.target.value})}
                                                     placeholder="URL do Brasão"
                                                     required
@@ -94,7 +96,7 @@ export default function CadastrarCidade({cidade}) {
                                             </div>
                                             <div className='f12'>
                                                     <Button id='botaolimpar' size="large" type='reset' variant="outlined">LImpar</Button>
-                                                    <Button onClick={e => resetform(form)} id='botao' size='large' variant="contained" type="submit">Adicionar +</Button>
+                                                    <Button id='botao' size='large' variant="contained" type="submit">Adicionar +</Button>
                                             </div>
                                         </div>
                                     </div>
@@ -109,7 +111,7 @@ export default function CadastrarCidade({cidade}) {
                         {
                             cidade.map(cidade => {
                                 return (
-                                    <CardCidade idCidade ={cidade.idkey} descricao={`ID: ${cidade.idkey}) ${cidade.nome}`}/>
+                                    <CardCidade descricao={`ID: ${cidade.idkey}) ${cidade.nome}`} destino={`cidade/${cidade.idkey}`} />
                                 )
                             })
                         }

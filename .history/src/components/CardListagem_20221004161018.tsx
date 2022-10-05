@@ -1,13 +1,13 @@
 import { Button } from "@mui/material";
+import Link from "next/link";
 
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import { PrismaClient } from "@prisma/client";
-import { useRouter } from "next/router";
 
 
-export default function CardListagem({idCidade, descricao}){
-    const router = useRouter();
+export default function CardListagem({descricao, destino, cidade},){
+
     const editar = async() =>{ 
         console.log('Editar');
         return{
@@ -18,27 +18,27 @@ export default function CardListagem({idCidade, descricao}){
         idCidade : Number
     }
 
-    async function deletarCidade (){
-        console.log('deletar cidade', idCidade)
+    const deletarCidade = async () =>{
+        console.log(cidade.idkey);
         try{
-            console.log('entrou e esta tentando encontrar')
-            fetch(`http://localhost:3000/api/cidades/delete/${idCidade}`,{   
+            fetch('http://localhost:3000/api/deletarCidade',{
+                body: JSON.stringify(cidade.idkey),
+    
                 headers : {
-                    'Content-type' : 'application/json',
+                    'Content-type' : 'application/json'
                 },
                 method: 'DELETE'
-            })
-            .then(() => {
-                router.replace(router.asPath)
             })
         }catch (error){
             console.log(error);
         }
+
+        return true;
     }
 
 
     return(
-        <>
+        <Link href={destino}>
         <div className="card2" >
             
                 <div className="titulocard2">
@@ -49,7 +49,7 @@ export default function CardListagem({idCidade, descricao}){
                     <Button onClick={deletarCidade}><DeleteForeverIcon/></Button>
                 </div>
         </div>
-        </>
+        </Link>
     )
 }
 

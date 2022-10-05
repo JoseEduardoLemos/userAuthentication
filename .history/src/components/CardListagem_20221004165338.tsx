@@ -21,14 +21,16 @@ export default function CardListagem({idCidade, descricao}){
     async function deletarCidade (){
         console.log('deletar cidade', idCidade)
         try{
-            console.log('entrou e esta tentando encontrar')
-            fetch(`http://localhost:3000/api/cidades/delete/${idCidade}`,{   
+            fetch('http://localhost:3000/api/deletarCidade',{
+                body: (idCidade), 
+    
                 headers : {
-                    'Content-type' : 'application/json',
+                    'Content-type' : 'application/json'
                 },
-                method: 'DELETE'
+                method: 'POST'
             })
             .then(() => {
+                
                 router.replace(router.asPath)
             })
         }catch (error){

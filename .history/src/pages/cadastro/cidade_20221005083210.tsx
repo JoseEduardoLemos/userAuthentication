@@ -52,8 +52,7 @@ export default function CadastrarCidade({cidade}) {
     // }
 
     function resetform(form: DataForm){
-        window.location.pathname
-        
+        this.form.reset;
     }
 
     return (
