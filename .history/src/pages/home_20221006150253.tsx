@@ -24,7 +24,7 @@ export default function Home( {usuario} ){
             <div className="containerPrincipalHome">
                 <div className="containerTituloHome">
                     <div className="tituloHome">
-                        <h1>Módulos PGM</h1>
+                        <h1>Cadastro e edição de documentos PGM</h1>
                     </div>
 
                     <div className="cardsHome">

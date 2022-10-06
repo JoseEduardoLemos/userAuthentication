@@ -162,6 +162,7 @@ a {
 
 .cardsHome{
   padding:4%;
+  margin: 1%;
   
 }
 .card{
@@ -171,7 +172,7 @@ a {
   border-bottom: solid;
   border-width:thin;
   border-color:#c0bec4;
-  width: 74%;
+  width: 50%;
 }
 .card:hover{
   cursor:pointer;
@@ -192,7 +193,6 @@ a {
 }
 #cardhome4{
   margin-left: 15%;
-  width: 115%;
 }
 
 

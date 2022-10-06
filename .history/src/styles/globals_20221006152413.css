@@ -162,16 +162,16 @@ a {
 
 .cardsHome{
   padding:4%;
+  margin: 1%;
   
 }
 .card{
   background-color: #F0F0F5;
   color:#52566B;
-  padding:5px;
   border-bottom: solid;
   border-width:thin;
   border-color:#c0bec4;
-  width: 74%;
+  width: 75%;
 }
 .card:hover{
   cursor:pointer;

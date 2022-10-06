@@ -147,7 +147,7 @@ a {
 .tituloHome{
   margin-left: 1%;
   margin-right:1%;
-  padding-left: 4%;
+  padding-left: 5%;
   color:#786190;
   border-bottom:solid;
   border-width:thin;
@@ -162,6 +162,7 @@ a {
 
 .cardsHome{
   padding:4%;
+  margin: 1%;
   
 }
 .card{
@@ -171,7 +172,7 @@ a {
   border-bottom: solid;
   border-width:thin;
   border-color:#c0bec4;
-  width: 74%;
+  width: 75%;
 }
 .card:hover{
   cursor:pointer;

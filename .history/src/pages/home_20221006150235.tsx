@@ -15,7 +15,7 @@ export default function Home( {usuario} ){
     const {user} = useContext(AuthContext)
     
     useEffect(() =>{
-        api.get("postgresql://sites:sites@localhost:5432/documentos?schema=documentos?table=users");
+        api.get("postgresql://sites:sites@localhost:5432/documentos?schema=documentos");
     }, [])
 
     return( 
@@ -24,7 +24,7 @@ export default function Home( {usuario} ){
             <div className="containerPrincipalHome">
                 <div className="containerTituloHome">
                     <div className="tituloHome">
-                        <h1>Módulos PGM</h1>
+                        <h1>Cadastro e edição de documentos PGM</h1>
                     </div>
 
                     <div className="cardsHome">

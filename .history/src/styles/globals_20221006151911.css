@@ -43,8 +43,7 @@ body {
 } 
 
 .botaohome{
-  height: 100%;
-  color:#dddddd;
+  
 }
 
 .botaohome:hover{
@@ -55,7 +54,6 @@ body {
   width:100%;
   display:flex;
   justify-content:space-around;
-  height: 60px;
 
 }
 .botoeshome2{
@@ -162,6 +160,7 @@ a {
 
 .cardsHome{
   padding:4%;
+  margin: 1%;
   
 }
 .card{
@@ -171,7 +170,6 @@ a {
   border-bottom: solid;
   border-width:thin;
   border-color:#c0bec4;
-  width: 74%;
 }
 .card:hover{
   cursor:pointer;
@@ -183,16 +181,13 @@ a {
 }
 
 #cardhome2{
-  margin-left:5%;
-  width:105%;
+  margin-left:3%;
 }
 #cardhome3{
-  margin-left:  10%;
-  width:110%;
+  margin-left:  6%;
 }
 #cardhome4{
-  margin-left: 15%;
-  width: 115%;
+  margin-left: 9%;
 }
 
 

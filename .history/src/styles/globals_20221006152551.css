@@ -157,7 +157,7 @@ a {
   border:solid;
   border-color: #786190;
   border-width:thin;
-  margin:8%;
+  margin:18%;
 }
 
 .cardsHome{
@@ -171,7 +171,7 @@ a {
   border-bottom: solid;
   border-width:thin;
   border-color:#c0bec4;
-  width: 74%;
+  width: 75%;
 }
 .card:hover{
   cursor:pointer;
