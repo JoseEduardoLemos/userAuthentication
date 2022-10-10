@@ -1,0 +1,28 @@
+import { PrismaClient } from "@prisma/client";
+import { NextApiRequest, NextApiResponse } from "next";
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse){
+    const prisma = new PrismaClient();
+    const {nomeCidade, urlBrasao} = req.body;
+    const cidadeId = req.body.id;
+    try{
+        const cidade = await prisma.cidade.update({
+            where :{
+                idkey : Number(cidadeId),
+                
+            },
+            data :{
+                nome : nomeCidade,
+                urlbrasao : urlBrasao,
+            }
+         })
+         return{
+            props:{
+                cidade,
+            }
+         }
+    }
+    catch(error){
+        console.log(error)
+    }
+}
