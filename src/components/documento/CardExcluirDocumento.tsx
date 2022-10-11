@@ -3,7 +3,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function CardListagemGrupo({id, descricao}){
+export default function CardExcluirGrupo({id, descricao}){
 
     const [openExclusao, setOpenExclusao] = useState(true);
 
@@ -15,7 +15,7 @@ export default function CardListagemGrupo({id, descricao}){
 
     async function deletarGrupo (){
         try{
-            fetch(`http://localhost:3000/api/grupos/delete/${id}`,{   
+            fetch(`http://localhost:3000/api/documentos/delete/${id}`,{   
                 headers : {
                     'Content-type' : 'application/json',
                 },
@@ -25,7 +25,7 @@ export default function CardListagemGrupo({id, descricao}){
                 router.replace(router.asPath)
             })
         }catch (error){
-            console.log(error);
+            alert(error);   
         }
     }
 
@@ -49,11 +49,11 @@ export default function CardListagemGrupo({id, descricao}){
                     aria-describedby="alert-dialog-description"
                 >
                     <DialogTitle id="alert-dialog-title">
-                    {`Deseja excluir permanentemente o grupo "${descricao}"?`}
+                    {`Deseja excluir permanentemente o documento "${descricao}"?`}
                     </DialogTitle>
                     <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        Após a exclusão, não será possível recuperar o grupo.
+                        Após a exclusão, não será possível recuperar o documento.
                     </DialogContentText>
                     </DialogContent>
                     <DialogActions>
