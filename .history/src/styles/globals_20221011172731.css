@@ -1,0 +1,348 @@
+html,
+body {
+
+
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+
+}
+
+
+.containerIndex{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  height:100%;
+}
+.navbar{
+  float:center;
+
+  display:block;
+  overflow: hidden;
+  color:#dddddd;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  background-color: #574074;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: rgba(0, 0, 0, 0.772) 0px 5px 20px -5px;
+} 
+
+.titulonavbar{
+  margin:10px;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+
+#h12index{
+  color:#574074;
+} 
+
+.botaohome{
+  height: 100%;
+  color:#dddddd;
+}
+
+.botaohome:hover{
+  cursor:pointer; 
+  background-color: #523c6d;
+} 
+.botoeshome{
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+  height: 60px;
+
+}
+.botoeshome2{
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
+
+.corpoformulario{
+  margin-top:60%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+  padding:25px;
+  border:solid;
+  border-width: thin;
+  border-color:rgb(195, 201, 206);
+  transition: border-color 1.5s;
+}
+
+.corpoformulario:hover{
+  border-color: #574074
+}
+
+#botao{
+  background-color:#574074;
+  color :#dddddd;
+}
+
+#botaolimpar{
+  margin-right:15px;
+  color:#574074;
+  border-color: #574074;
+}
+
+.f1{
+  margin-top:15px;
+}
+
+.f12{
+  margin-top:15px;
+  display:flex;
+  justify-content: flex-start;
+}
+
+
+
+#btn{
+  display: flex;
+  justify-content: stretch;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.tituloHome{
+  margin-left: 1%;
+  margin-right:1%;
+  padding-left: 4%;
+  color:#786190;
+  border-bottom:solid;
+  border-width:thin;
+}
+
+.containerTituloHome{
+  border:solid;
+  border-color: #786190;
+  border-width:thin;
+  margin:8%;
+}
+
+.cardsHome{
+  padding:4%;
+  
+}
+.card{
+  background-color: #F0F0F5;
+  color:#52566B;
+  padding:5px;
+  border-bottom: solid;
+  border-width:thin;
+  border-color:#c0bec4;
+  width: 74%;
+}
+.card:hover{
+  cursor:pointer;
+  background-color: #D0D7E8;
+
+}
+.titulocard{
+  padding-left:5%;
+}
+
+#cardhome2{
+  margin-left:5%;
+  width:105%;
+}
+#cardhome3{
+  margin-left:  10%;
+  width:110%;
+}
+#cardhome4{
+  margin-left: 15%;
+  width: 115%;
+}
+
+.cardSeparador{
+  display :flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#campo2 {
+   margin-top:15px;
+   margin-right:15px;
+}
+
+.filtros{
+  width: 25%;
+  display : flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  flex-wrap : wrap;
+}
+
+
+.formGrande{
+  display:flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width:100%;
+}
+.filtros{
+  display: flex;
+  flex-wrap:wrap;
+  width: 100%;
+  justify-content: flex-start;
+}
+#filtro{
+  margin-right:15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
+
+
+.titulo{
+  margin-top:5%;
+  margin-left: 9%;
+  color:#574074;
+}
+
+.cardCidade{
+  margin-left: 10%;
+  margin-right:10%;
+  margin-top: 15px;
+}
+
+.card2:hover{
+  border-color: #574074;
+}
+
+.card2{
+  border-bottom : solid;
+  border-width:thin;
+  border-color: #c3c1c6;
+  color:#52566B;
+  height:50px;
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items: center;  
+  align-content: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.card2:hover{
+  background-color:#D0D7E8;
+}
+
+.iconesEditarExcluir{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+}
+
+#inserirTexto{
+  height : 50px;
+  width: 100%;
+  border-radius: 5px;
+  border: solid;
+  border-width: thin;
+}
+
+#botaoExcluir{
+  background-color: rgb(165, 11, 11);
+}
+#botaoExcluir:active{
+  background-color: rgb(199, 15, 15);
+}
+#botaoExcluir::after{
+  background-color: rgb(199, 15, 15);
+}
+
+
+
+
+.localDoArquivo{
+  height : 55px;
+
+  border : solid;
+  border-width:  thin;
+  border-color:rgb(185, 182, 182);
+
+  padding : 15px;
+  border-radius : 5px;
+  text-align : center; 
+  display :flex;
+  flex-direction : row;
+  justify-content : center;
+  align-content: center;
+  align-items: center;
+
+  transition : border-color 1s;
+}
+
+
+.localDoArquivo:hover{
+ border-color :#76638d;
+}
+
+.localDoArquivo:active{
+  border-color :#93d68a;
+ }
+.input:active{
+  border-color:#574074;
+}
