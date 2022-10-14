@@ -1,6 +1,5 @@
 import { Alert, Button, Snackbar, TextField } from "@mui/material";
 import { PrismaClient } from "@prisma/client";
-import axios from 'axios';
 import { useRouter } from "next/router";
 import { useState } from "react";
 import CardListagemCidade from "../../components/CardListagemCidade";
@@ -20,25 +19,11 @@ export default function CadastrarCidade({cidade}) {
 
     const [documento, setDocumento] = useState(null);
 
-
     const router = useRouter();
-
-
     const submitForm = () =>{
-        let formData = new FormData();
-        formData.append("file", documento);
-        axios.post('http://localhost:3000/api/aploads',
-            formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-        }) 
-        .then((res) =>{
-            alert("Arquivo Salvo!")
-        })
-        .catch((err) => alert(err))
-    
-    };
+        const formData = new FormData();
+        formData.append("file",documento);
+    }
     
     
     async function criar(data: DataForm){
@@ -83,15 +68,13 @@ export default function CadastrarCidade({cidade}) {
                 </div>
                 <div>
                             <div>
-                                <form action="" onSubmit={(e) =>{
-                                    e.preventDefault()
-                                    submitForm()
-                                }}>
-                                    <input type="file" accept=".pdf"
+
+                                <form action="">
+                                    <input type="file"
                                         onChange={(e) => setDocumento(e.target.files[0])}
                                     />
                                     <text>Insira uma imagem</text>
-                                    <button type='submit'>SALVAR</button>
+                                    <button type='submit'></button>
                                 </form>
 
 

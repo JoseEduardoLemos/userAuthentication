@@ -20,24 +20,19 @@ export default function CadastrarCidade({cidade}) {
 
     const [documento, setDocumento] = useState(null);
 
-
     const router = useRouter();
 
 
-    const submitForm = () =>{
-        let formData = new FormData();
-        formData.append("file", documento);
-        axios.post('http://localhost:3000/api/aploads',
-            formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-        }) 
+    const submitForm = (data) =>{
+        const formData = new FormData();
+        formData.append("file",documento);
+
+        axios
+        .post('https://www.googleapis.com/upload/drive/v3/files?uploadType=media', formData)
         .then((res) =>{
             alert("Arquivo Salvo!")
         })
-        .catch((err) => alert(err))
-    
+        .catch((err) => alert('Erro ao Salvar arquivo.'))
     };
     
     
@@ -85,9 +80,9 @@ export default function CadastrarCidade({cidade}) {
                             <div>
                                 <form action="" onSubmit={(e) =>{
                                     e.preventDefault()
-                                    submitForm()
+                                    submitForm(form)
                                 }}>
-                                    <input type="file" accept=".pdf"
+                                    <input type="file"
                                         onChange={(e) => setDocumento(e.target.files[0])}
                                     />
                                     <text>Insira uma imagem</text>
@@ -103,7 +98,7 @@ export default function CadastrarCidade({cidade}) {
 
                                 <form onSubmit = {e =>{
                                     e.preventDefault()
-                                    criar(form)
+                                    submitForm(form)
                                     clearForms(form)
                                 }}>
                                     <div className='cardCidade'>

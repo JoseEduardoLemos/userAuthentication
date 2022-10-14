@@ -25,14 +25,18 @@ export default function CadastrarCidade({cidade}) {
 
 
     const submitForm = () =>{
-        let formData = new FormData();
-        formData.append("file", documento);
-        axios.post('http://localhost:3000/api/aploads',
-            formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-        }) 
+        //let formData = new FormData();
+        //formData.append("text", documento);
+        axios({
+            method : 'post',
+            url : 'https://crudcrud.com/api/0abd13e605db493b82e1d77d5afb83e8',
+            data : {
+                documento
+            },
+            headers : {
+                'Content-Type' : 'multipart/form-data'
+            }
+        })        
         .then((res) =>{
             alert("Arquivo Salvo!")
         })
@@ -87,8 +91,8 @@ export default function CadastrarCidade({cidade}) {
                                     e.preventDefault()
                                     submitForm()
                                 }}>
-                                    <input type="file" accept=".pdf"
-                                        onChange={(e) => setDocumento(e.target.files[0])}
+                                    <input type="text" 
+                                        onChange={(e) => setDocumento(e.target.value)}
                                     />
                                     <text>Insira uma imagem</text>
                                     <button type='submit'>SALVAR</button>

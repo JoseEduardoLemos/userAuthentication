@@ -27,12 +27,11 @@ export default function CadastrarCidade({cidade}) {
     const submitForm = () =>{
         let formData = new FormData();
         formData.append("file", documento);
-        axios.post('http://localhost:3000/api/aploads',
-            formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-        }) 
+        axios.post('http://localhost:3000/api/aploads', formData, {
+            headers: {
+            'Content-Type': 'multipart/form-data'
+            }
+        })
         .then((res) =>{
             alert("Arquivo Salvo!")
         })

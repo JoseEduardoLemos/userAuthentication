@@ -1,6 +1,5 @@
 import { Alert, Button, Snackbar, TextField } from "@mui/material";
 import { PrismaClient } from "@prisma/client";
-import axios from 'axios';
 import { useRouter } from "next/router";
 import { useState } from "react";
 import CardListagemCidade from "../../components/CardListagemCidade";
@@ -18,31 +17,14 @@ export default function CadastrarCidade({cidade}) {
     const [form, setForm] = useState<DataForm>({nomeCidade: '', urlBrasao: '', imagem : null});
     const [openSuccess, setOpenSucces] = useState(false);
 
-    const [documento, setDocumento] = useState(null);
-
+    const [imagem, setImagem] = useState(null);
 
     const router = useRouter();
 
-
-    const submitForm = () =>{
-        let formData = new FormData();
-        formData.append("file", documento);
-        axios.post('http://localhost:3000/api/aploads',
-            formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-        }) 
-        .then((res) =>{
-            alert("Arquivo Salvo!")
-        })
-        .catch((err) => alert(err))
-    
-    };
-    
-    
     async function criar(data: DataForm){
         try{
+            const formData = new FormData();
+            formData.append("image", imagem);
             fetch('http://localhost:3000/api/cidades/create/criarCidade',{
                 body: JSON.stringify(data),
     
@@ -51,6 +33,7 @@ export default function CadastrarCidade({cidade}) {
                 },
                 method: 'POST'
             })
+            console.log("imagem")
             router.replace(router.asPath)
 
             .then(() => {
@@ -64,6 +47,11 @@ export default function CadastrarCidade({cidade}) {
             console.log(error);
         }
     }
+
+    const changeHandler = (event) =>{
+        setImagem(event.target.files[0]);
+    }
+
 
     const clearForms =(data : DataForm) =>{
         setForm({nomeCidade : '', urlBrasao : '', imagem:null})
@@ -83,23 +71,11 @@ export default function CadastrarCidade({cidade}) {
                 </div>
                 <div>
                             <div>
-                                <form action="" onSubmit={(e) =>{
-                                    e.preventDefault()
-                                    submitForm()
-                                }}>
-                                    <input type="file" accept=".pdf"
-                                        onChange={(e) => setDocumento(e.target.files[0])}
-                                    />
+
+                                <form action="">
+                                    <input type="text" />
                                     <text>Insira uma imagem</text>
-                                    <button type='submit'>SALVAR</button>
                                 </form>
-
-
-
-
-
-
-                                
 
                                 <form onSubmit = {e =>{
                                     e.preventDefault()
@@ -121,6 +97,20 @@ export default function CadastrarCidade({cidade}) {
                                                 />
                                             </div>
                                             <div className='f1'>
+                                                <div className="divInput">
+                                                    <div className='inputImage'>
+                                                        <h3> Escolha um brasão para esta cidade:</h3>     
+                                                            <input 
+                                                            className="enviar" 
+                                                            id="fileSelect" 
+                                                            type='file' 
+                                                            accept=".jpeg, .jpg, .png"
+                                                            onChange={e => setImagem({...form, imagem : e.target.files[0]})}
+                                                            required
+                                                            />
+                                                    </div>
+                                                    {/* Pass the selectect or dropped files as props */}    
+                                                </div>
                                             </div>
                                             {/* <div className='f1'>
                                                 <TextField

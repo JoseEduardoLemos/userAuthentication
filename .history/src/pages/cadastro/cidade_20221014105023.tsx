@@ -24,20 +24,21 @@ export default function CadastrarCidade({cidade}) {
     const router = useRouter();
 
 
-    const submitForm = () =>{
+    const submitForm = (data) =>{
         let formData = new FormData();
+        let file = document.querySelector('#file');
         formData.append("file", documento);
-        axios.post('http://localhost:3000/api/aploads',
-            formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-        }) 
+
+        axios
+        .post('https://objectstorage.sa-saopaulo-1.oraclecloud.com', formData,{
+            headers: {
+                'Content-Type' : 'multipart/form-data'
+            }
+        })
         .then((res) =>{
             alert("Arquivo Salvo!")
         })
-        .catch((err) => alert(err))
-    
+        .catch((err) => alert('Erro ao Salvar arquivo.'))
     };
     
     
@@ -85,7 +86,7 @@ export default function CadastrarCidade({cidade}) {
                             <div>
                                 <form action="" onSubmit={(e) =>{
                                     e.preventDefault()
-                                    submitForm()
+                                    submitForm(form)
                                 }}>
                                     <input type="file" accept=".pdf"
                                         onChange={(e) => setDocumento(e.target.files[0])}

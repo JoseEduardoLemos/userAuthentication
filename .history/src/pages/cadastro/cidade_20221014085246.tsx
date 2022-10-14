@@ -24,20 +24,16 @@ export default function CadastrarCidade({cidade}) {
     const router = useRouter();
 
 
-    const submitForm = () =>{
-        let formData = new FormData();
+    const submitForm = (data) =>{
+        const formData = new FormData();
         formData.append("file", documento);
-        axios.post('http://localhost:3000/api/aploads',
-            formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-        }) 
+
+        axios
+        .post('http://localhost:3000/public/uploads', formData)
         .then((res) =>{
             alert("Arquivo Salvo!")
         })
-        .catch((err) => alert(err))
-    
+        .catch((err) => alert('Erro ao Salvar arquivo.'))
     };
     
     
@@ -85,10 +81,10 @@ export default function CadastrarCidade({cidade}) {
                             <div>
                                 <form action="" onSubmit={(e) =>{
                                     e.preventDefault()
-                                    submitForm()
+                                    submitForm(form)
                                 }}>
-                                    <input type="file" accept=".pdf"
-                                        onChange={(e) => setDocumento(e.target.files[0])}
+                                    <input type="text"
+                                        onChange={(e) => setDocumento(e.target.value)}
                                     />
                                     <text>Insira uma imagem</text>
                                     <button type='submit'>SALVAR</button>

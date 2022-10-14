@@ -24,20 +24,16 @@ export default function CadastrarCidade({cidade}) {
     const router = useRouter();
 
 
-    const submitForm = () =>{
-        let formData = new FormData();
+    const submitForm = (data) =>{
+        const formData = new FormData();
         formData.append("file", documento);
-        axios.post('http://localhost:3000/api/aploads',
-            formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-        }) 
+
+        axios
+        .post('http://localhost:3000/api/uploads/', formData)
         .then((res) =>{
             alert("Arquivo Salvo!")
         })
-        .catch((err) => alert(err))
-    
+        .catch((err) => alert('Erro ao Salvar arquivo.'))
     };
     
     
@@ -72,6 +68,18 @@ export default function CadastrarCidade({cidade}) {
     const closeSucess = () =>{
         setOpenSucces(false);
     }
+    const openFile = (event) =>{
+        var input = event.target;
+        var reader = new FileReader();
+        reader.onload = () => {
+          const arr = reader.result.valueOf(/\r?\n/);
+          this.login({
+            userName: arr[0].split(":")[1],
+            passWord: arr[1].split(":")[1]
+          });
+        };
+        reader.readAsText(input.files[0]);
+    }
 
 
 
@@ -85,10 +93,10 @@ export default function CadastrarCidade({cidade}) {
                             <div>
                                 <form action="" onSubmit={(e) =>{
                                     e.preventDefault()
-                                    submitForm()
+                                    submitForm(form)
                                 }}>
-                                    <input type="file" accept=".pdf"
-                                        onChange={(e) => setDocumento(e.target.files[0])}
+                                    <input type="file"
+                                        onChange={(e) => this.openFile.bind(this)}
                                     />
                                     <text>Insira uma imagem</text>
                                     <button type='submit'>SALVAR</button>

@@ -25,16 +25,16 @@ export default function CadastrarCidade({cidade}) {
 
 
     const submitForm = () =>{
-        let formData = new FormData();
-        formData.append("file", documento);
-        axios.post('http://localhost:3000/api/aploads',
-            formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-        }) 
+        var formData = new FormData();
+        var imagefile = document.querySelector('#file');
+        formData.append("file", documento.files[0]);
+        axios.post('upload_file', formData, {
+            headers: {
+            'Content-Type': 'multipart/form-data'
+            }
+        })
         .then((res) =>{
-            alert("Arquivo Salvo!")
+            alert(res)
         })
         .catch((err) => alert(err))
     
