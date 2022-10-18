@@ -82,9 +82,8 @@ export default function CadastrarCidade({cidade}) {
                     <h1>Cadastro de nova cidade</h1>
                 </div>
                 <div>
-                    <div>
-                        <div className='cardCidade'> 
-                            <div>   
+                            <div>
+                            <div className='cardCidade'>    
                                 <form action="" onSubmit={(e) =>{
                                     e.preventDefault()
                                     submitForm()
@@ -96,8 +95,12 @@ export default function CadastrarCidade({cidade}) {
                                     <button type='submit'>SALVAR</button>
                                 </form>
                             </div>
-                        </div>
- 
+
+
+
+
+
+                                
 
                                 <form onSubmit = {e =>{
                                     e.preventDefault()

@@ -43,6 +43,19 @@ export default function CadastrarCidade({cidade}) {
     
     async function criar(data: DataForm){
         try{
+            fetch('')
+        }
+        let Minio = require('minio');
+
+        let minioClient = new Minio.Client({
+            endPoint : '',
+            port: 445,
+            useSSL : true,
+            accessKey: '',
+            secreetKey: ''
+        });
+        
+        try{
             fetch('http://localhost:3000/api/cidades/create/criarCidade',{
                 body: JSON.stringify(data),
     
