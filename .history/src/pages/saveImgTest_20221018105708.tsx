@@ -29,7 +29,7 @@ export default function saveImgTest () {
                     multiple
                     id ='file'
                     name="image"
-                    accept=".pdf"
+                    accept=".jpeg, .jpg, .png"
                     required
                 />
                 <Button type='submit' variant='contained'>Submit</Button>

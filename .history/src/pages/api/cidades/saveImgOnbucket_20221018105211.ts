@@ -33,7 +33,7 @@ const apiRoute = nextConnect({
     onError(error : any, req : NextApiRequest, res : NextApiResponse) {
       res.status(501).json({ error: `Sorry something Happened! ${error.message}` });
     },
-    onNoMatch(req : NextApiRequest, res : NextApiResponse) {
+    onNoMatch(req, res) {
       res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
     },
   });

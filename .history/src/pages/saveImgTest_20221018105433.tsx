@@ -23,14 +23,14 @@ export default function saveImgTest () {
     return(
         <>
             <Container>
-            <form action='/api/cidades/saveImgOnbucket' encType='multipart/form-data' method='POST'>
+            <form action='/api/uploads' encType='multipart/form-data'>
                 <input
                     type="file"
                     multiple
                     id ='file'
                     name="image"
-                    accept=".pdf"
-                    required
+                    accept=".jpeg, .jpg, .png"
+                    requireda
                 />
                 <Button type='submit' variant='contained'>Submit</Button>
             </form>
